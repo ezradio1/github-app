@@ -4,9 +4,8 @@ import { UseFetchDataProps } from './index.types';
 const useFetchData = () => {
   const fetchData = async <T>({ url, params }: UseFetchDataProps<T>) => {
     try {
-      const access_token = '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';
       const headers = {
-        Authorization: `Token ${access_token}`,
+        Authorization: `Token ${process.env.REACT_APP_ACCESS_TOKEN}`,
       };
 
       const response: AxiosResponse<T> = await axios(
