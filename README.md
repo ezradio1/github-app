@@ -1,46 +1,31 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Github App
 
-## Available Scripts
+This application allows users to search for Github user data by name and display the top 5 repositories for that user. You can access the application at the link: https://github-app-vert.vercel.app/
 
-In the project directory, you can run:
+![alt text](https://github.com/ezradio1/github-app/blob/main/public/preview.png?raw=true)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technology Used
+This application was created using Create React App with Typescript and uses Tailwind CSS for styling.
 
-### `npm test`
+## Running the Application
+1. Clone this repository to your computer
+2. Open a terminal in the cloned folder
+3. Run the command npm install or yarn install to install all required dependencies
+4. Run the command npm start or yarn start to start the application
+5. The application will open in your browser at http://localhost:3000
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Using the Application
+1. On the application's home page, enter the Github user name you wish to search for in the search field.
+2. Press the "Search" button to begin the search.
+3. The search results will appear below the search field. If the user is found, the top 5 repositories for that user will be displayed.
+4. Click on the repository name to visit the repository page on Github.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Contributing
+You can help to improve this application by submitting pull requests.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
