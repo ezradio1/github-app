@@ -1,5 +1,4 @@
-import React from 'react';
-import Banner from '../../assets/images/undraw_bug_fixing.png';
+import Banner from '@/assets/images/error_banner.png';
 
 const ErrorState = () => {
   return (

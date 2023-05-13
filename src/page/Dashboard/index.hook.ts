@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import useFetchData from '../../hook/useFetchData';
 import { Repository, ResponseSearch, User } from './index.types';
+import useFetchData from '@/hook/useFetchData';
 
 const useIndex = () => {
   const [activeKey, setActiveKey] = useState(-1);
@@ -8,6 +8,7 @@ const useIndex = () => {
   const [allData, setAllData] = useState<User[]>([]);
   const [isLoading, setIsLoading] = useState({ list: false, detail: false });
   const [error, setError] = useState({ list: null, detail: null });
+  const [isSearch, setIsSearch] = useState(false);
 
   const { getData } = useFetchData();
 
@@ -47,31 +48,41 @@ const useIndex = () => {
   };
 
   const handleSearch = async () => {
-    setError((prevState) => ({ ...prevState, list: null }));
-    setIsLoading((prevState) => ({ ...prevState, list: true }));
+    if (search) {
+      setError((prevState) => ({ ...prevState, list: null }));
+      setIsLoading((prevState) => ({ ...prevState, list: true }));
 
-    const { data, error } = await getData<ResponseSearch>({
-      url: 'search/users',
-      params: {
-        q: search,
-      },
-    });
-    setIsLoading((prevState) => ({ ...prevState, list: false }));
+      setIsSearch(true);
+      const { data, error } = await getData<ResponseSearch>({
+        url: 'search/users',
+        params: {
+          q: search,
+        },
+      });
+      setIsLoading((prevState) => ({ ...prevState, list: false }));
 
-    if (!error) {
-      const normalizedData =
-        data?.items.map((el) => {
-          return {
-            ...el,
-            repo: [],
-            isFirstFetch: true,
-          };
-        }) || [];
-      setAllData(normalizedData);
-    } else {
-      setError((prevState) => ({ ...prevState, list: error }));
+      if (!error) {
+        const normalizedData =
+          data?.items.map((el) => {
+            return {
+              ...el,
+              repo: [],
+              isFirstFetch: true,
+            };
+          }) || [];
+        setAllData(normalizedData);
+      } else {
+        setError((prevState) => ({ ...prevState, list: error }));
+      }
     }
   };
+
+  const isFirstLoad = Boolean(
+    !error.list && allData.length === 0 && !isSearch && !isLoading.list
+  );
+  const isDataNotFound = Boolean(
+    !error.list && allData.length === 0 && isSearch && !isLoading.list
+  );
 
   return {
     activeKey,
@@ -83,6 +94,8 @@ const useIndex = () => {
     handleSearch,
     allData,
     error,
+    isDataNotFound,
+    isFirstLoad,
   };
 };
 

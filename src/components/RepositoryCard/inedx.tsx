@@ -1,4 +1,4 @@
-import { Repository } from '../../page/Dashboard/index.types';
+import { Repository } from "@/page/Dashboard/index.types";
 
 const RepositoryCard = ({
   name,

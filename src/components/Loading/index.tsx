@@ -1,4 +1,4 @@
-import Loader from '../../assets/icon/IcLoader';
+import Loader from "@/assets/icon/IcLoader";
 
 const LoadingState = () => {
   return (

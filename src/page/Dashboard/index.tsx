@@ -1,10 +1,12 @@
-import Accordion from '../../components/Accordion';
-import Button from '../../components/Button';
-import ErrorState from '../../components/ErrorState';
-import Input from '../../components/Input';
-import LoadingState from '../../components/Loading';
-import RepositoryCard from '../../components/RepositoryCard/inedx';
+import Accordion from '@/components/Accordion';
+import Button from '@/components/Button';
 import useIndex from './index.hook';
+import Input from '@/components/Input';
+import WelcomeState from '@/components/WelcomeState';
+import EmptyState from '@/components/EmptyState';
+import ErrorState from '@/components/ErrorState';
+import LoadingState from '@/components/Loading';
+import RepositoryCard from '@/components/RepositoryCard/inedx';
 
 const Dashboard = () => {
   const {
@@ -16,20 +18,35 @@ const Dashboard = () => {
     handleSearch,
     allData,
     error,
+    isDataNotFound,
+    isFirstLoad,
   } = useIndex();
 
   return (
     <div className='flex justify-center w-full'>
       <div className='flex flex-col p-3 gap-2 w-full max-w-[100vw] md:max-w-[95vw] xl:max-w-[1078px]'>
-        <Input value={search} onChange={(evt) => setSearch(evt.target.value)} />
+        <Input
+          value={search}
+          onChange={(evt) => setSearch(evt.target.value)}
+          onKeyUp={(e) => {
+            if (e.key === 'Enter') {
+              handleSearch();
+            }
+          }}
+        />
         <Button type='submit' onClick={handleSearch}>
           Search
         </Button>
         <hr className='my-2' />
 
-        {error.list && <ErrorState />}
-        {isLoading.list && <LoadingState />}
-        {!isLoading.list && (
+        {isFirstLoad && <WelcomeState />}
+        {isDataNotFound && <EmptyState />}
+
+        {error.list ? (
+          <ErrorState />
+        ) : isLoading.list ? (
+          <LoadingState />
+        ) : (
           <div className='max-h-[calc(100vh-150px)] overflow-y-scroll grid grid-cols-1 gap-1'>
             {allData.map((el, key) => (
               <Accordion
