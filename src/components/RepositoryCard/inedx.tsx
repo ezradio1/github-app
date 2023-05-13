@@ -1,4 +1,4 @@
-import { Repository } from "@/page/Dashboard/index.types";
+import { Repository } from '@/page/Dashboard/index.types';
 
 const RepositoryCard = ({
   name,
@@ -11,7 +11,11 @@ const RepositoryCard = ({
       <div className='bg-gray-100 p-4 mt-2 border-gray-200 border-[1px]'>
         <div className='flex justify-between font-bold text-[16px]'>
           <p>{name}</p>
-          <p>{stargazers_count}</p>
+
+          <div className='flex justify-end items-center gap-2'>
+            <p>{stargazers_count}</p>
+            <i className='fa fa-star' />
+          </div>
         </div>
         <p className='text-xs overflow-y-auto max-h-[164px] mt-4'>
           {description || 'No Description'}
