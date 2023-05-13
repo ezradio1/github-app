@@ -13,9 +13,9 @@ This application was created using Create React App with Typescript and uses Tai
 ## Running the Application
 1. Clone this repository to your computer
 2. Open a terminal in the cloned folder
-3. Run the command npm install or yarn install to install all required dependencies
-4. Run the command npm start or yarn start to start the application
-5. The application will open in your browser at http://localhost:3000
+3. Run the command `npm install` or `yarn install` to install all required dependencies
+4. Run the command `npm start` or `yarn start` to start the application
+5. The application will open in your browser at `http://localhost:3000`
 
 ## Using the Application
 1. On the application's home page, enter the Github user name you wish to search for in the search field.
