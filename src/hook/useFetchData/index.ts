@@ -7,6 +7,7 @@ const useFetchData = () => {
       const headers = {
         Authorization: `Token ${process.env.REACT_APP_ACCESS_TOKEN}`,
       };
+      
       const response: AxiosResponse<T> = await axios(
         `${process.env.REACT_APP_API_URL}${url}`,
         { params, headers }
